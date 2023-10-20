@@ -51,6 +51,14 @@ resource "aws_lambda_function" "hello_world" {
   role = aws_iam_role.lambda_exec.arn
   
   layers = [ "arn:aws:lambda:ap-northeast-2:738900069198:layer:AWS-Parameters-and-Secrets-Lambda-Extension:11" ]
+
+  environment {
+    variables = {
+      DB_HOST = "golfzone-rds-0001.cydwidyyw7mo.us-east-1.rds.amazonaws.com"
+      DB_USER = "golfzon"
+      DB_PASSWORD = "abcde!@"
+    }
+  }
 }
 
 resource "aws_cloudwatch_log_group" "hello_world" {
